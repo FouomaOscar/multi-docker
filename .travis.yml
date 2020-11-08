@@ -18,8 +18,8 @@ script:
 # take them those images and push them to docker hub
   - docker push oscarfouoma/multi-client
   - docker push oscarfouoma/multi-nignx
-  - docker push oscarfouoma/multi-server 
-  - docker push oscarfouoma/multi-worker 
+  - docker push oscarfouoma/multi-server
+  - docker push oscarfouoma/multi-worker
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "us-east-2"
