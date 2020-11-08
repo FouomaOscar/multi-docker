@@ -10,7 +10,7 @@ after_success:
 
 script:
   - docker build -t oscarfouoma/multi-client ./client
-  - docker build -t oscarfouoma/multi-nigng ./nginx
+  - docker build -t oscarfouoma/multi-nignx ./nginx
   - docker build -t oscarfouoma/multi-server ./server
   - docker build -t oscarfouoma/multi-worker ./worker
 
