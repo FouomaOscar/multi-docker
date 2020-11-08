@@ -1,0 +1,30 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t oscarfouoma/react-test -f ./client/Dockerfile.dev ./client
+
+after_success:
+  - docker run oscarfouoma/react-test npm test -- --coverage
+
+script:
+  - docker build -t oscarfouoma/multi-client ./client
+  - docker build -t oscarfouoma/multi-nigng ./nginx
+  - docker build -t oscarfouoma/multi-server ./server
+  - docker build -t oscarfouoma/multi-worker ./worker
+
+# log in first to Docker CLI
+# take them those images and push them to docker hub
+
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-east-2"
+#   app: "dockerapp"
+#   env: "Dockerapp-env"
+#   bucket_name: "elasticbeanstalk-us-east-2-667277902999"
+#   bucket_path: "dockerapp"
+#   on:
+#     branch: main
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
