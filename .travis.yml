@@ -20,14 +20,14 @@ script:
   - docker push oscarfouoma/multi-nignx
   - docker push oscarfouoma/multi-server
   - docker push oscarfouoma/multi-worker
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-east-2"
-#   app: "dockerapp"
-#   env: "Dockerapp-env"
-#   bucket_name: "elasticbeanstalk-us-east-2-667277902999"
-#   bucket_path: "dockerapp"
-#   on:
-#     branch: main
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-667277902999"
+  bucket_path: "docker-multi"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
