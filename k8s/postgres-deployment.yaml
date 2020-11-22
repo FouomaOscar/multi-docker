@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: postgres-deployment
 spec:
   replicas: 1
@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
-            claimName: database-persistent-volume-claim 
+            claimName: database-persistent-volume-claim
       containers:
         - name: postgres
           image: postgres
@@ -23,17 +23,9 @@ spec:
             - containerPort: 5432
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgressql/data
+              mountPath: /var/lib/postgresql/data
               subPath: postgres
           env:
-            # - name: POSTGRES_USER
-            #   value: postgres
-            # - name: POSTGRES_HOST
-            #   value: postgres-cluster-ip-service
-            # - name: POSTGRES_PORT
-            #   value: 5432
-            # - name: POSTGRES_DATABASE
-            #   value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
